@@ -1,10 +1,8 @@
-import json
 import urllib.parse
 import requests
 
 
 def CreateFlashcard(word):
-
     # setup api
     main_api = 'https://googledictionaryapi.eu-gb.mybluemix.net/?'
     define = word
@@ -20,12 +18,10 @@ def CreateFlashcard(word):
     for element in partOfSpeech:
         out.append([element])
         try:
-            for i in range(10):
-                try:
-                    out[n].append("definition: " + json_status[element][i]['definition'])
-                    out[n].append('example: ' + json_status[element][i]['example'])
-                except:
-                    pass
+
+            out[n].append("definition: " + json_status[element][0]['definition'])
+            out[n].append('example: ' + json_status[element][0]['example'])
+
         except:
             pass
         n += 1
